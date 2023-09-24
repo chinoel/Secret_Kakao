@@ -38,6 +38,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(view -> {
             Intent i = new Intent(view.getContext(), InChatting.class);
+            i.putExtra("user_id", arrayList.get(position).getPl_id());
             view.getContext().startActivity(i);
         });
     }

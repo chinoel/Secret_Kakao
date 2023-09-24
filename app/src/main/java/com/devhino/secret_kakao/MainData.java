@@ -6,16 +6,15 @@ public class MainData {
     private int iv_profile;
     private String pl_name;
     private String pl_text;
-
     private String pl_id;
 
-    private ArrayList<String> list;
+    private ArrayList<MainChatList> list;
 
-    public void setList(ArrayList<String> list) {
+    public void setList(ArrayList<MainChatList> list) {
         this.list = list;
     }
 
-    public MainData(int iv_profile, String pl_name, String pl_text, String pl_id, ArrayList<String> list) {
+    public MainData(int iv_profile, String pl_name, String pl_text, String pl_id, ArrayList<MainChatList> list) {
         this.iv_profile = iv_profile;
         this.pl_name = pl_name;
         this.pl_text = pl_text;
@@ -23,7 +22,7 @@ public class MainData {
         this.list = list;
     }
 
-    public ArrayList<String> getList() {
+    public ArrayList<MainChatList> getList() {
         return list;
     }
 

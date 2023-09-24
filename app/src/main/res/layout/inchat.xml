@@ -5,6 +5,7 @@
     android:orientation="horizontal"
     >
     <ImageView
+        android:id="@+id/inchat_usericon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/back_key"
@@ -16,24 +17,32 @@
         android:orientation="vertical"
         >
         <TextView
+            android:id="@+id/inchat_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="23sp"
+            android:textSize="17sp"
             android:text="유저"
             />
         <TextView
+            android:id="@+id/inchat_usertext"
             android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="26sp"
+            android:textSize="16sp"
             android:text="fkashfdjhjdkasfhkjdhfjkhahsdfohif"
             android:background="@drawable/stroke_text"
             android:padding="10dp"
-            android:maxEms="7"
+            android:maxEms="10"
             android:textColor="@color/white"
 
             />
     </LinearLayout>
-
+    <TextView
+        android:layout_marginLeft="8dp"
+        android:id="@+id/inchat_times"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="2023-09-22\n오전 09:24"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

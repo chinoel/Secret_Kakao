@@ -8,11 +8,22 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="현재 베타 버전입니다.\nUI 개선, 기능 추가 예정입니다."
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="#8BC34A"
+        android:layout_marginBottom="10dp"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatting"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:scrollbarFadeDuration="0"
         android:scrollbarSize="5dp"
         android:scrollbarThumbVertical="@android:color/darker_gray"
@@ -23,9 +34,13 @@
 
     <Button
         android:id="@+id/btn_0"
-        android:layout_weight="8"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="추가"
+        android:textSize="18sp"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="알림 접근 허용하기"
+        android:layout_marginBottom="10dp"
         />
 </LinearLayout>

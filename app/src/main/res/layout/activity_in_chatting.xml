@@ -19,6 +19,7 @@
             android:src="@drawable/back_key"
             />
         <TextView
+            android:id="@+id/user_name"
             android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
         android:background="#000000"
         />
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/inchat_ui"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
