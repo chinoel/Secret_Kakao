@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Secret_Kakao" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">#B0E0E6</item>
     </style>
+
+    <item name="background" type="color">#DBDF70</item>
 
     <style name="Theme.Secret_Kakao" parent="Base.Theme.Secret_Kakao" />
 </resources>
