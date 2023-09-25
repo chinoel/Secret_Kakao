@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         arrayList = new ArrayList<>();
-        adapter = new MainAdapter(arrayList);
+        adapter = new MainAdapter(arrayList, this);
         recyclerView.setAdapter(adapter);
 
         btn = findViewById(R.id.btn_0);

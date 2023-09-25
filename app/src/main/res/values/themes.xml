@@ -5,7 +5,8 @@
          <item name="colorPrimary">#B0E0E6</item>
     </style>
 
-    <item name="background" type="color">#DBDF70</item>
+    <item name="back_key" type="color">#000000</item>
+    <item name="background" type="color">#FFEB3B</item>
 
     <style name="Theme.Secret_Kakao" parent="Base.Theme.Secret_Kakao" />
 </resources>

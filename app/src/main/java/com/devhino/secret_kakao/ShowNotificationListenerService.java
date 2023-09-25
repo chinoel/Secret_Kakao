@@ -14,6 +14,7 @@ import android.service.notification.StatusBarNotification;
 import android.util.Log;
 
 import android.app.Notification.MessagingStyle;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,11 +30,8 @@ public class ShowNotificationListenerService extends NotificationListenerService
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if ("execute_pending_intent".equals(intent.getAction())) {
-
-            }
-            if ("execute_pending_call".equals(intent.getAction())) {
-
+            if ("update_data".equals(intent.getAction())) {
+                changeCheck(intent.getIntExtra("position", -1));
             }
         }
     };
@@ -42,8 +40,35 @@ public class ShowNotificationListenerService extends NotificationListenerService
     public void onCreate() {
         super.onCreate();
 
-        IntentFilter filter = new IntentFilter("execute_pending_intent");
+        IntentFilter filter = new IntentFilter("update_data");
         registerReceiver(broadcastReceiver, filter);
+    }
+
+    public void changeCheck(int position) {
+        if (position == -1) {
+        }
+        else {
+            SharedPreferences sharedPreferences = getSharedPreferences("userdata", Context.MODE_PRIVATE);
+            ArrayList<MainData> arrayList;
+
+            String json = sharedPreferences.getString("datafile", "");
+
+            Gson gson = new Gson();
+            Type type = new TypeToken<ArrayList<MainData>>() {}.getType();
+            arrayList = gson.fromJson(json, type);
+
+            arrayList.remove(position);
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            String s = gson.toJson(arrayList);
+            editor.putString("datafile", s);
+            editor.apply();
+
+            Intent intent = new Intent("my_notification");
+            sendBroadcast(intent);
+
+            Toast.makeText(this, "해당 메시지가 삭제되었습니다", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -60,7 +85,7 @@ public class ShowNotificationListenerService extends NotificationListenerService
         Type type = new TypeToken<ArrayList<MainData>>() {}.getType();
         arrayList = gson.fromJson(json, type);
 
-
+        // Data getting & Change ---------------------------------
         Notification notification = sbn.getNotification();
 
         // Kakao Start Data - Low_bobo
@@ -70,7 +95,6 @@ public class ShowNotificationListenerService extends NotificationListenerService
         Bundle extra = notification.extras;
         String name = extra.getString(Notification.EXTRA_TITLE);
         CharSequence text = extra.getCharSequence(Notification.EXTRA_TEXT);
-
 
         if (sbn.getPackageName().equals("com.kakao.talk") && name != null) {
             // time format
@@ -116,6 +140,7 @@ public class ShowNotificationListenerService extends NotificationListenerService
                 arrayList.remove(abs);
                 arrayList.add(0, move);
             }
+            // Data getting & Change ---------------------------------
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             String s = gson.toJson(arrayList);

@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,5 +92,10 @@ public class InChatting extends AppCompatActivity {
         registerReceiver(notificationReceiver, filter);
 
         data_load();
+
+        ImageView back_key = findViewById(R.id.back_key);
+        back_key.setOnClickListener(view -> {
+            finish();
+        });
     }
 }

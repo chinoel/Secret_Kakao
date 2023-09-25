@@ -1,6 +1,8 @@
 package com.devhino.secret_kakao;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +19,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
 
     private ArrayList<MainData> arrayList;
 
-    public MainAdapter(ArrayList<MainData> arrayList) {
+    public MainAdapter(ArrayList<MainData> arrayList, Context context) {
         this.arrayList = arrayList;
+        this.mContext = context;
     }
+    Context mContext;
 
     @NonNull
     @Override
@@ -40,6 +44,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
             Intent i = new Intent(view.getContext(), InChatting.class);
             i.putExtra("user_id", arrayList.get(position).getPl_id());
             view.getContext().startActivity(i);
+        });
+
+        holder.itemView.setOnLongClickListener(view -> {
+            Intent i = new Intent("update_data");
+            i.putExtra("position", position);
+            mContext.sendBroadcast(i);
+
+            return false;
         });
     }
 
